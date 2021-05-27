@@ -3,8 +3,8 @@
 playing=""
 paused=""
 
-#playing=""
-#paused=""
+# playing=""
+# paused=""
 
 while true; do
 	status="$(/usr/bin/playerctl status)"

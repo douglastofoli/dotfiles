@@ -216,21 +216,29 @@ bindsym XF86MonBrightnessDown exec ~/.config/i3/scripts/backlight.sh dec 5
 ### Autostart ###
 #################
 
-exec --no-startup-id picom -b
+exec --no-startup-id dbus-launch picom -CG --config /etc/xdg/picom.conf
+exec --no-startup-id /bin/bash ~/.config/i3/scripts/noblank-screen.sh
 exec --no-startup-id feh --bg-scale /usr/share/wallpapers/current
-exec --no-startup-id polybar --config=~/.config/polybar/polybar.conf LVDS1
+exec --no-startup-id polybar --config=~/.config/polybar/polybar.conf LVDS-1
 exec --no-startup-id nm-applet
 exec --no-startup-id discord
+exec --no-startup-id telegram-desktop
 exec --no-startup-id setxkbmap -model abnt2 -layout br -variant abnt2
+exec --no-startup-id insync start
+exec_always --no-startup-id numlockx on
 
 ####################
 ### Window rules ###
 ####################
 
-assign [class="google-chrome"] $ws1
-assign [class="telegram-desktop"] $ws3
+assign [class="Google-chrome"] $ws1
+assign [class="TelegramDesktop"] $ws3
 assign [class="discord"] $ws4
-assign [class="spotify"] $ws5
+assign [class="Spotify"] $ws5
+
+for_window [class="TelegramDesktop"] floating enable
+#for_window [class="kitty"] floating enable
+#for_window [class="kitty"] border normal
 
 ##################
 ### Other apps ###

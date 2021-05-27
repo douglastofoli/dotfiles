@@ -251,14 +251,14 @@ class Player:
 
     def updateIcon(self):
         self.icon = (
-            ICON_PAUSED if self.status == 'playing' else
-            ICON_PLAYING if self.status == 'paused' else
+            ICON_PLAYING if self.status == 'playing' else
+            ICON_PAUSED if self.status == 'paused' else
             ICON_STOPPED if self.status == 'stopped' else
             ICON_NONE
         )
         self.icon_reversed = (
-            ICON_PLAYING if self.status == 'playing' else
-            ICON_PAUSED
+            ICON_PAUSED if self.status == 'playing' else
+            ICON_PLAYING
         )
 
     def _print(self, status):
@@ -407,7 +407,7 @@ class Player:
                 print("Invalid format string")
             self._print(text)
         else:
-            self._print(ICON_NONE)
+            self._print(ICON_STOPPED)
 
 
 def _dbusValueToPython(value):
