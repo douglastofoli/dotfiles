@@ -4,7 +4,7 @@ set -e
 
 exec="dbus-launch picom"
 comp="picom"
-cmd="/usr/bin/$exec -CG --config /etc/xdg/picom.conf"
+cmd="/usr/bin/$exec -CG --config ~/.config/picom/picom.conf"
 
 if [[ -z "$(pgrep $comp)" ]]; then
 	$cmd

@@ -4,8 +4,8 @@ xkbmap="/usr/bin/setxkbmap"
 grep="/usr/bin/grep"
 
 langs=(
-	us
 	br
+	us
 )
 
 current=$($xkbmap -query | $grep layout | $grep -Eo '[a-zA-Z]+$')

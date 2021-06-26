@@ -216,22 +216,25 @@ bindsym XF86MonBrightnessDown exec ~/.config/i3/scripts/backlight.sh dec 5
 ### Autostart ###
 #################
 
-exec --no-startup-id dbus-launch picom -CG --config /etc/xdg/picom.conf
+exec --no-startup-id dbus-launch picom -CG --config ~/.config/picom/picom.conf
 exec --no-startup-id /bin/bash ~/.config/i3/scripts/noblank-screen.sh
 exec --no-startup-id feh --bg-scale /usr/share/wallpapers/current
 exec --no-startup-id polybar --config=~/.config/polybar/polybar.conf LVDS-1
 exec --no-startup-id nm-applet
 exec --no-startup-id discord
-exec --no-startup-id telegram-desktop
+exec --no-startup-id QT_IM_MODULE=xim /usr/bin/telegram -workdir /home/douglas/.local/share/TelegramDesktop/ -- %u
 exec --no-startup-id setxkbmap -model abnt2 -layout br -variant abnt2
 exec --no-startup-id insync start
 exec_always --no-startup-id numlockx on
+#exec_always --no-startup-id google-chrome-stable
+exec_always --no-startup-id firefox
 
 ####################
 ### Window rules ###
 ####################
 
 assign [class="Google-chrome"] $ws1
+assign [class="firefox"] $ws1
 assign [class="TelegramDesktop"] $ws3
 assign [class="discord"] $ws4
 assign [class="Spotify"] $ws5
@@ -247,3 +250,8 @@ for_window [class="TelegramDesktop"] floating enable
 bindsym $mod+d exec --no-startup-id rofi -show drun -theme ~/.config/rofi/theme.rasi
 bindsym $mod+Print exec --no-startup-id flameshot gui -p /media/douglas/gdrive/Screenshots
 
+# Make the currently focused window a scratchpad
+bindsym $mod+Shift+minus move scratchpad
+
+# Show the first scratchpad window
+bindsym $mod+minus scratchpad show
